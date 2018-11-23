@@ -1,0 +1,134 @@
+FORMAT: 1A
+HOST: http://localhost:3003/api/v1
+
+# Tax Calculator Endpoint
+
+API endpoints for Tax Calculator.
+
+# Group Sellers
+
+## Tax Products Collection [/tax_products]
+
+### Create a new tax_product [POST]
+Create a new tax_product.
+
+**Payload Details**
+
+`name`          - product name ( must be unique)
+`tax_code`      - product tax_code ( must be between 1 to 3)
+`price`         - product price ( must be greater than zero)
+
++ Request (application/json)
+        
+        {
+            "tax_product":
+                {
+                    "name": "Big Mac",
+                    "tax_code": 1,
+                    "price": 50000,
+                }
+                
+        }
+
++ Response 201 (application/json)
+
+        {
+            "tax_product": {
+                "name": "Big Mac",
+                "tax_code": 1,
+                "price": 50000
+            }
+        }
+    
+### Get Tax Products [GET /tax_products{?page,per_page}]
+
+Gets all tax_products, you can also filter by name and tax_code
+
++ Parameters
+    + page: `1`(number, required) - current page of tax_products
+    + per_page: `5` (number, required) - number of results to show in a page
+
++ Request (application/json)
+
++ Response 200 (application/json)
+    
+        {
+            "tax_products": [
+                {
+                    "id": 1,
+                    "name": "Bubur Ayam",
+                    "tax_code": 1,
+                    "type": "Food & Beverage",
+                    "refundable": "Yes",
+                    "price": 15000,
+                    "tax": 1500,
+                    "amount": 16500
+                }
+            ],
+            "meta": {
+                "current_page": 1,
+                "next_page": null,
+                "prev_page": null,
+                "total_pages": 1,
+                "total_count": 1
+            }
+        }}
+        
+### Show a tax_product [GET /tax_products/{id}]
+Return a single tax_product
+
++ Parameters
+
+    + id: `1`(number, required) - tax_product_id
+
++ Request (application/json)
+        
++ Response 200 (application/json)
+    
+        {
+            "tax_product": {
+                "id": 1,
+                "name": "Bubur Ayam",
+                "tax_code": 1,
+                "type": "Food & Beverage",
+                "refundable": "Yes",
+                "price": 15000,
+                "tax": 1500,
+                "amount": 16500
+            }
+        }
+
+
+### Update a tax_product [PATCH /tax_products/{id}]
+Update data of a tax_product, example price updated to 55000 from 50000
+
+**Payload Details**
+
+`name`          - product name ( must be unique)
+`tax_code`      - product tax_code ( must be between 1 to 3)
+`price`         - product price ( must be greater than zero)
+
++ Parameters
+
+    + id: `1`(number, required) - tax_product_id
+
++ Response 200 (application/json)
+
+        {
+            "tax_product": {
+                "name": "Big Mac",
+                "tax_code": 1,
+                "price": 55000
+            }
+        }
+
+### Delete a tax_product [DELETE /tax_products/{id}]
+Update data of a tax_product
+
++ Parameters
+
+    + id: `1`(number, required) - tax_product_id
+
++ Request (application/json)
+    
++ Response 200 (application/json)

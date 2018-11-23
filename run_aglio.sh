@@ -1,0 +1,1 @@
+aglio --theme-variables flatly --theme-template triple -i ./api/v1/tax_product.apib -s -p3005
