@@ -34,7 +34,7 @@ Where 1234 is the PID of Aglio
 
 ### Notes
 
-Any change to tinkerseller_api.md will restart the Aglio server with the changes. Just refresh the page to show the changes.
+Any change to tax_products.apib will restart the Aglio server with the changes. Just refresh the page to show the changes.
 
 ### API Blueprint Syntax Error
 
